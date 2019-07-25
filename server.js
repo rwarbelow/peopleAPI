@@ -1,10 +1,14 @@
 const environment = process.env.NODE_ENV || 'development';
+console.log("HERE IS THE NODE ENV:")
+console.log(process.env.NODE_ENV)
 const configuration = require('./knexfile.js')[environment];
 const database = require('knex')(configuration);
 const express = require('express');
 const server = express();
 const cors = require('cors');
 const faker = require('faker');
+console.log("HERE IS THE DATABASE:")
+console.log(process.env.RDS_HOSTNAME)
 
 server.set('port', process.env.PORT || 3000);
 server.use(express.json());
