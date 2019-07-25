@@ -5,7 +5,7 @@ const cors = require('cors');
 const faker = require('faker');
 const Sequelize = require('sequelize');
 const seqConfig = require('./config/config.js')[environment]
-const sequelize = (process.env == 'development') ? new Sequelize('postgres://localhost/people') : new Sequelize(seqConfig.database, seqConfig.user, seqConfig.password, {host: seqConfig.host,dialect: seqConfig.dialect});
+const sequelize = (process.env == 'development') ? new Sequelize('postgres://localhost/people') : new Sequelize(seqConfig.database, seqConfig.username, seqConfig.password, {host: seqConfig.host,dialect: seqConfig.dialect});
 const PersonModel = require('./models/person')
 const Person = PersonModel(sequelize, Sequelize)
 
