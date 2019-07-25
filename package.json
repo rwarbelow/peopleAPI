@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.jss",
-    "db:migration:run": "knex migrate:latest"
+    "db:migration:run": "knex migrate:latest --env production"
   },
   "author": "",
   "license": "ISC",
