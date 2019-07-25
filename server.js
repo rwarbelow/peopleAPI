@@ -8,7 +8,12 @@ const seqConfig = require('./config/config.js')[environment]
 const sequelize = (process.env == 'development') ? new Sequelize('postgres://localhost/people') : new Sequelize(seqConfig.database, seqConfig.username, seqConfig.password, {host: seqConfig.host,dialect: seqConfig.dialect});
 const PersonModel = require('./models/person')
 const Person = PersonModel(sequelize, Sequelize)
+var os = require( 'os' );
 
+var networkInterfaces = os.networkInterfaces( );
+console.log("whoa")
+console.log( networkInterfaces.lo0 );
+console.log("whoa")
 sequelize
 .authenticate()
 .then(() => {
@@ -57,6 +62,7 @@ server.get('/data', (request, response) => {
 //   })
 // });
 
-server.listen(server.get('port'), () => {
-  console.log(`You're now listening at localhost ${server.get('port')}`);
+var serv = server.listen(server.get('port'), () => {
+  console.log(serv.address())
+  console.log(`You're now listening at ${serv.address().address} ${serv.address().port}`);
 })
