@@ -20,6 +20,9 @@ server.get('/api/v1/people', (request, response) => {
   })
 });
 
+
+
+
 server.get('/data', (request, response) => {
   database('people').insert({name: `${faker.name.firstName()} ${faker.name.lastName()}`, nickname: faker.name.jobTitle(), birthyear: faker.random.number()})
   .then((data) => {
