@@ -7,13 +7,12 @@ const server = express();
 const cors = require('cors');
 const faker = require('faker');
 
-database.migrate.latest([configuration]) 
-
 server.set('port', process.env.PORT || 3000);
 server.use(express.json());
 server.use(cors());
 
 server.get('/api/v1/people', (request, response) => {
+  console.log(database)
   database('people').select()
   .then((people) => {
     return response.status(200).json(people)
