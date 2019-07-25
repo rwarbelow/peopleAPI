@@ -63,6 +63,6 @@ server.get('/data', (request, response) => {
 // });
 
 var serv = server.listen(server.get('port'), () => {
-  console.log(serv.address())
+  console.log(`ADDRESS INFO: ${serv.address()}`)
   console.log(`You're now listening at ${serv.address().address} ${serv.address().port}`);
 })
