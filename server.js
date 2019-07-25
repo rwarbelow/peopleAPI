@@ -7,7 +7,7 @@ const server = express();
 const cors = require('cors');
 const faker = require('faker');
 
-database.migrate.latest([config]) 
+database.migrate.latest([configuration]) 
 
 server.set('port', process.env.PORT || 3000);
 server.use(express.json());
