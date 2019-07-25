@@ -12,5 +12,21 @@ module.exports = {
     seeds: {
       directory: './db/dev/seeds'
     }
+  },
+  production: {
+    client: 'pg',
+    connection: {
+      host: process.env.RDS_HOSTNAME,
+      user: process.env.RDS_USERNAME,
+      password: process.env.RDS_PASSWORD,
+      port: process.env.RDS_PORT
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/prod/seeds'
+    }
   }
 };

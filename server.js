@@ -4,6 +4,7 @@ const database = require('knex')(configuration);
 const express = require('express');
 const server = express();
 const cors = require('cors');
+const faker = require('faker');
 
 server.set('port', process.env.PORT || 3000);
 server.use(express.json());
@@ -13,6 +14,16 @@ server.get('/api/v1/people', (request, response) => {
   database('people').select()
   .then((people) => {
     return response.status(200).json(people)
+  })
+  .catch((error) => {
+    return response.status(500).json(error)
+  })
+});
+
+server.get('/data', (request, response) => {
+  database('people').insert({name: `${faker.name.firstName()} ${faker.name.lastName()}`, nickname: faker.name.jobTitle(), birthyear: faker.random.number()})
+  .then((data) => {
+    response.redirect('/api/v1/people')
   })
   .catch((error) => {
     return response.status(500).json(error)
