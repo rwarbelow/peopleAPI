@@ -12,7 +12,8 @@ server.use(express.json());
 server.use(cors());
 
 server.get('/api/v1/people', (request, response) => {
-  console.log(database)
+
+  console.log(database.connection())
   database('people').select()
   .then((people) => {
     return response.status(200).json(people)
